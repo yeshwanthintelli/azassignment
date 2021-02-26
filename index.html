@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Storage Queues Demo</title>
+</head>
+<body>
+    <h1>Push to storage queues</h1>
+    <form action="/push" method="POST">
+        <input type="text" name="email"/>
+        <input type="submit" name="submit"/>
+    </form>
+
+    <h1>Pop Message From Queue</h1>
+    <button id="dequeue">
+        Get Queue Message
+    </button>
+
+    <script>
+        var button = document.getElementById("dequeue");
+        button.addEventListener('click', () => {
+            fetch('/pop')
+                .then(response => response.json())
+                .then(data => alert(data)); 
+        });
+    </script>
+</body>
+</html>
